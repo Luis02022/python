@@ -1,6 +1,6 @@
 import os 
 
-os.system("cls || clear")
+# os.system("cls || clear")
 
 class Endereco:
     def __init__(self, logradouro: str, numero: int) -> None:

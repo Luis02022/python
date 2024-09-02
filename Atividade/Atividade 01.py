@@ -1,6 +1,6 @@
 import os 
 
-os.system("cls || clear")
+# os.system("cls || clear")
 
 class Livro:
     def __init__(self, titulo: str, autor: str, numero_paginas: int, preco: float) -> None:
