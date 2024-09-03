@@ -1,0 +1,68 @@
+import os
+
+os.system("cls || clear")
+
+class SaldoInsuficienteError(Exception):
+    pass
+
+class ValorNegativoError(Exception):
+    pass
+
+
+class Conta:
+    def __init__(self, numero_conta: str, agencia: int) -> None:
+        self.numero_conta = numero_conta
+        self.agencia = agencia
+        self._saldo = 0 #atributo Protegido
+
+    @property
+    def saldo(self):
+        return self._saldo    
+#Metodos
+#"raise" é um lançado de erros
+    def sacar(self, valor) -> float:
+        #Verificar erro
+        try:
+         self.__verificarsacar(valor)
+        except SaldoInsuficienteError as erro: 
+            return f"Erro: {erro}"
+        #sacar
+        self._saldo -= valor
+        return self._saldo
+    
+
+    
+    def __verificarsacar(self,valor):
+        if valor >  self.saldo:
+            raise SaldoInsuficienteError ("Valor Negativo")
+
+
+    def depositar(self, valor):
+        try:
+            self.__verificardepositar
+        except ValorNegativoError as erro:
+            return f"Erro: {erro}"
+            self.saldo += valor
+
+
+
+    def __verificarDepositar(self,valor):
+        if valor < 0:
+            raise ValorNegativoError ("Valor Negativo")
+
+class ContaCorrente(Conta): 
+    pass
+
+class ContaPoupanca(Conta):
+    pass
+
+#Instancionar classes
+conta_corrente = ContaCorrente(222, 333)
+conta_poupanca = ContaPoupanca(444, 555)
+
+
+print(conta_corrente.saldo)
+
+print(conta_corrente.sacar(200))
+
+print(conta_corrente.saldo)
