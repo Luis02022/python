@@ -9,3 +9,4 @@ def criar_pessoa():
 
 def test_nome(criar_pessoa):
     assert criar_pessoa.nome == "Rafael"
+

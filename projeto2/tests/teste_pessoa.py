@@ -1,7 +1,7 @@
 from models.pessoa import Pessoa
 import pytest
 
-@pytest 
+@pytest.fixture 
 def pessoa_valida(Pessoa):
     pessoa = Pessoa(18, "Marta")
     return pessoa
